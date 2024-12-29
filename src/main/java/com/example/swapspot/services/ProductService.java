@@ -1,30 +1,37 @@
 package com.example.swapspot.services;
 
 import com.example.swapspot.models.Product;
+import com.example.swapspot.repositories.ProductRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j // логирование
+@RequiredArgsConstructor
 public class ProductService {
-    private List<Product> products = new ArrayList<>();
-    private long ID = 0;
-    {
-        products.add(new Product(++ID,"Яблоко", "a", 100, "Rostov-on-Don", "Bill"));
-        products.add(new Product(++ID,"Iphone 16", "a", 100000, "Rostov-on-Don", "Bill"));
+
+    private final ProductRepository productRepository;
+
+    public List<Product> listProducts(String title) {
+        if (title != null) return productRepository.findByTitle(title);
+
+        return productRepository.findAll();
     }
-    public List<Product> listProducts() { return products; }
 
     public void saveProduct (Product product) {
-        product.setId(++ID);
-        products.add(product);
+        log.info("Saving product: {}", product);
+        productRepository.save(product);
     }
     public void deleteProduct (Long id) {
-        products.removeIf(product -> product.getId().equals(id));
+        log.info("Deleting product: {}", id);
+        productRepository.deleteById(id);
     }
 
     public Product getProductById(Long id) {
-        return products.stream().filter(product -> product.getId().equals(id)).findFirst().orElse(null);
+        return productRepository.findById(id).orElse(null);
     }
 }
