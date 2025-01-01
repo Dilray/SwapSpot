@@ -4,7 +4,11 @@
     <title>SwapSpot</title>
 </head>
 <body>
-<h1>SwapSpot!</h1><hr>
+<h1>SwapSpot | <a href="/login">Войти</a></h1><hr>
+<form action="/logout" method="post">
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <input type="submit" value="Выйти"/>
+</form>
 <h4>a</h4>
 <#list products as product>
     <div>
