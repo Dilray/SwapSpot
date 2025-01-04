@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwapSpot</title>
+    <title>${title}</title>
 
     <!-- Подключение Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">SwapSpot</a>
+    <a class="navbar-brand" href="#">Мой сайт</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,36 +31,9 @@
     </div>
 </nav>
 
-<div class="container mt-5">
-    <h1 class="text-center">Регистрация</h1>
-    <hr>
-
-    <#if errorMessage??>
-        <div class="alert alert-danger" role="alert">
-            ${errorMessage}
-        </div>
-    </#if>
-
-    <form action="/registration" method="post" class="mt-4">
-        <div class="form-group">
-            <label for="username">Имя пользователя:</label>
-            <input type="text" class="form-control" id="username" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Эл. почта:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="phone">Номер телефона:</label>
-            <input type="text" class="form-control" id="phone" name="phoneNumber" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Пароль:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
-    </form>
+<div class="container mt-4">
+    <h1>${header}</h1>
+    <p>${content}</p>
 </div>
 
 <!-- Подключение jQuery и Bootstrap JS -->
