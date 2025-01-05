@@ -40,8 +40,6 @@
 
         <#if user.isAdmin()>
             <a href="/admin" class="btn btn-warning mt-2">Панель администратора</a>
-        <#else>
-            <a href="/login" class="btn btn-primary mt-2">Войти</a>
         </#if>
     <#else>
         <a href="/login" class="btn btn-primary mt-2">Войти</a>
@@ -59,50 +57,49 @@
     </div>
 
     <#if user.email??>
-    <hr>
-    <h3>Создать новый товар</h3>
-    <form action="/product/create" method="post" enctype="multipart/form-data" class="mt-4">
-        <div class="form-group">
-            <label for="title">Название объявления:</label>
-            <input type="text" id="title" name="title" class="form-control" required />
-        </div>
+        <hr>
+        <h3>Создать новый товар</h3>
+        <form action="/product/create" method="post" enctype="multipart/form-data" class="mt-4">
+            <div class="form-group">
+                <label for="title">Название объявления:</label>
+                <input type="text" id="title" name="title" class="form-control" required />
+            </div>
 
-        <div class="form-group">
-            <label for="description">Описание объявления:</label>
-            <input type="text" id="description" name="description" class="form-control" required />
-        </div>
+            <div class="form-group">
+                <label for="description">Описание объявления:</label>
+                <input type="text" id="description" name="description" class="form-control" required />
+            </div>
 
-        <div class="form-group">
-            <label for="price">Цена:</label>
-            <input type="number" id="price" name="price" class="form-control" required />
-        </div>
+            <div class="form-group">
+                <label for="price">Цена:</label>
+                <input type="number" id="price" name="price" class="form-control" required />
+            </div>
 
-        <div class="form-group">
-            <label for="city">Город:</label>
-            <input type="text" id="city" name="city" class="form-control" required />
-        </div>
+            <div class="form-group">
+                <label for="city">Город:</label>
+                <input type="text" id="city" name="city" class="form-control" required />
+            </div>
 
-        <div class="form-group">
-            <label for="file1">Первая фотография:</label>
-            <input type="file" id="file1" name="file1" accept="image/*" class="form-control-file" />
-        </div>
+            <div class="form-group">
+                <label for="file1">Первая фотография:</label>
+                <input type="file" id="file1" name="file1" accept="image/*" class="form-control-file" />
+            </div>
 
-        <div class="form-group">
-            <label for="file2">Вторая фотография:</label>
-            <input type="file" id="file2" name="file2" accept="image/*" class="form-control-file" />
-        </div>
+            <div class="form-group">
+                <label for="file2">Вторая фотография:</label>
+                <input type="file" id="file2" name="file2" accept="image/*" class="form-control-file" />
+            </div>
 
-        <div class="form-group">
-            <label for="file3">Третья фотография:</label>
-            <input type="file" id="file3" name="file3" accept="image/*" class="form-control-file" />
-        </div>
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <button type="submit" class="btn btn-success">Добавить товар</button>
-    </form>
+            <div class="form-group">
+                <label for="file3">Третья фотография:</label>
+                <input type="file" id="file3" name="file3" accept="image/*" class="form-control-file" />
+            </div>
+            <input type="hidden" name="_csrf" value="${_csrf.token}">
+            <button type="submit" class="btn btn-success">Добавить товар</button>
+        </form>
     </#if>
 </div>
 
-<!-- Подключение jQuery и Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
