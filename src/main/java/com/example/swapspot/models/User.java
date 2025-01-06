@@ -25,7 +25,7 @@ public class User implements UserDetails {
     @Column(name = "name")
     private String name;
     @Column(name = "active")
-    private boolean active; // признак активности
+    private boolean active;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private Image avatar;
@@ -40,14 +40,17 @@ public class User implements UserDetails {
     private List<Product> products = new ArrayList<>();
     private LocalDateTime dateOfCreated;
 
+
     @PrePersist
     private void init() {
         dateOfCreated = LocalDateTime.now();
     }
 
-    public boolean isAdmin() { return roles.contains(Role.ROLE_ADMIN); }
-
     // security
+
+    public boolean isAdmin() {
+        return roles.contains(Role.ROLE_ADMIN);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
